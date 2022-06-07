@@ -51,7 +51,7 @@ async function run() {
 
         // update like
 
-        app.put('/blog/:id', async (req, res) => {
+        app.put('/bloglike/:id', async (req, res) => {
             const id = req.params.id;
             const data = req.body;
             
@@ -69,7 +69,7 @@ async function run() {
             res.send(result);
         });
 
-        app.put('/blog/:id', async (req, res) => {
+        app.put('/blogdislike/:id', async (req, res) => {
             const id = req.params.id;
             const data = req.body;
             
