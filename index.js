@@ -32,6 +32,14 @@ async function run() {
             res.send(blogs);
         });
 
+        // add new blog
+
+        app.post('/blog', async (req, res) => {
+            const newItem = req.body;
+            const result = await itemsCollection.insertOne(newItem);
+            res.send(result);
+        });
+
     }
     finally {
     }
