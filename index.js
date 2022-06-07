@@ -32,6 +32,15 @@ async function run() {
             res.send(blogs);
         });
 
+        // blog id (details)
+
+        app.get('/blog/:id', async (req, res) => {
+            const id = req.params.id;
+            const query = { _id: ObjectId(id) };
+            const blog = await itemsCollection.findOne(query);
+            res.send(blog);
+        });
+
         // add new blog
 
         app.post('/blog', async (req, res) => {
