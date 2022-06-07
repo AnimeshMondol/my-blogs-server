@@ -49,6 +49,44 @@ async function run() {
             res.send(result);
         });
 
+        // update like
+
+        app.put('/blog/:id', async (req, res) => {
+            const id = req.params.id;
+            const data = req.body;
+            
+            const filter = { _id: ObjectId(id) };
+            const options = { upsert: true };
+
+            const updateDoc = {
+                $set: {
+                    like: data.like
+                },
+
+            };
+
+            const result = await itemsCollection.updateOne(filter, updateDoc, options);
+            res.send(result);
+        });
+
+        app.put('/blog/:id', async (req, res) => {
+            const id = req.params.id;
+            const data = req.body;
+            
+            const filter = { _id: ObjectId(id) };
+            const options = { upsert: true };
+
+            const updateDoc = {
+                $set: {
+                    dislike: data.dislike
+                },
+
+            };
+
+            const result = await itemsCollection.updateOne(filter, updateDoc, options);
+            res.send(result);
+        });
+
     }
     finally {
     }
